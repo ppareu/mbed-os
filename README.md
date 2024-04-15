@@ -18,22 +18,32 @@
    설치를 다하면 gcc-arm-none-eabi-10.3-2021.10-x86_64-linux이런식으로 이름이 되어 있을건데 gcc-arm-none-eabi 이런식으로 파일이름 변경
 
 7. 위 파일들을 다 설치했다면 마지막으로 st-link도 설치해야한다.
+
    sudo apt-get update
+   
    sudo apt-get install git cmake build-essential libusb-1.0-0-dev
 
+
    git clone https://github.com/stlink-org/stlink.git
+
    cd stlink (파일로 이동해야함)
 
+
    cmake -DCMAKE_BUILD_TYPE=Release .
+
    make
+
    sudo make install
+
    sudo ldconfig
+
 
    which st-flash 명령어를 쳐서 /usr/local/bin/st-flash 뜨면 성공이다.
 
-8. nano ~/.bashrc에 들어가서 맨아래 부분에
+9. nano ~/.bashrc에 들어가서 맨아래 부분에
    
    export PATH=/opt/gcc-arm-none-eabi/bin:$HOME/.local/bin:$PATH
+
    alias mbed2='mbed-tools'
 
    이거를 그대로 입력해야함 그러면 이제 설정은 끝났다.
